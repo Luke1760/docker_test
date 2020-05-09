@@ -25,6 +25,7 @@ class CodesController < ApplicationController
   # POST /codes.json
   def create
     @code = Code.new(code_params)
+    debugger
 
     respond_to do |format|
       if @code.save
