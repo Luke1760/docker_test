@@ -23,9 +23,13 @@ class CodesController < ApplicationController
 
   # POST /codes
   # POST /codes.json
-  def create
-    @code = Code.new(code_params)
-    debugger
+    def create
+      # debugger
+      @code = Code.new(
+        code_params.merge(
+        result: docker run ruby ruby -e '#{params[:code][:user]}'.strip
+        )
+      )
 
     respond_to do |format|
       if @code.save
